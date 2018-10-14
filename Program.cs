@@ -68,6 +68,14 @@ namespace Awesome {
         );
         break;
       }
+      case "/mem":
+      {
+    await botClient.SendPhotoAsync(
+          chatId: e.Message.Chat,
+  photo: "https://github.com/TelegramBots/book/raw/master/src/docs/photo-ara.jpg"
+);
+  break;
+      }
        default:
       {
         Console.WriteLine($"Received a text message in chat {e.Message.Chat.Id}.");
