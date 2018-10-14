@@ -23,7 +23,7 @@ namespace Awesome {
     static async void Bot_OnMessage(object sender, MessageEventArgs e) {
       switch (e.Message.Text)
       {
-      case  "/protchenko":
+      case  "Протченко":
       {
         Console.WriteLine($"Received a text message in chat {e.Message.Chat.Id}.");
         await botClient.SendTextMessageAsync(
@@ -32,7 +32,7 @@ namespace Awesome {
         );
         break;
       }
-      case "/butin":
+      case "Батин":
       {
         Console.WriteLine($"Received a text message in chat {e.Message.Chat.Id}.");
         await botClient.SendTextMessageAsync(
@@ -41,7 +41,7 @@ namespace Awesome {
         );
         break;
       }
-      case "/strigalev":
+      case "Стригалёв":
       {
         Console.WriteLine($"Received a text message in chat {e.Message.Chat.Id}.");
         await botClient.SendTextMessageAsync(
@@ -55,7 +55,7 @@ namespace Awesome {
         Console.WriteLine($"Received a text message in chat {e.Message.Chat.Id}.");
         await botClient.SendTextMessageAsync(
           chatId: e.Message.Chat,
-          text:   "/protchenko, /butin, /strigalev"
+          text:   "/start, Протченко, Батин, Стригалёв, мемас"
         );
         break;
       }
@@ -68,11 +68,11 @@ namespace Awesome {
         );
         break;
       }
-      case "/mem":
+      case "мемас":
       {
     await botClient.SendPhotoAsync(
           chatId: e.Message.Chat,
-  photo: "https://github.com/donwhispers/chatbotssp/blob/add_img_mem/K0a0QHM67nk.jpg"
+  photo: "https://raw.githubusercontent.com/donwhispers/chatbotssp/master/mems/izGUdkA7itU.jpg"
 );
   break;
       }
