@@ -72,7 +72,7 @@ namespace Awesome {
       {
     await botClient.SendPhotoAsync(
           chatId: e.Message.Chat,
-  photo: "https://github.com/TelegramBots/book/raw/master/src/docs/photo-ara.jpg"
+  photo: "https://github.com/donwhispers/chatbotssp/blob/add_img_mem/K0a0QHM67nk.jpg"
 );
   break;
       }
