@@ -1,15 +1,34 @@
 ﻿using System;
 using System.Threading;
+using System.Collections.Generic;
 using Telegram.Bot;
 using Telegram.Bot.Args;
+
 
 namespace Awesome {
   class Program {
     static ITelegramBotClient botClient;
-
+      
+    static List <string> Butin = new List<string>();
+    static List <string> Strigalev = new List<string>();
+    static List <string> Protchenko = new List<string>();
+    static List <string> Memas = new List<string>();
+    
     static void Main() {
       botClient = new TelegramBotClient("676101534:AAGQMTb_4eHW_VstJDnK60ps8hx6jsP9OD4");
-
+      Butin.Add("Для тех, кто не говорит по-русски... *шёпотом* А здесь такие есть");
+      Butin.Add("Так это, как это ваша фамилия?");
+      Butin.Add("Ясно, понятно.");
+      Butin.Add("Достаточно");
+      Strigalev.Add("Семантические связи, молодые люди.");
+      Strigalev.Add("Я вам в тысячный раз повторяю, эпам вас обманывает.");
+      Strigalev.Add("Есть правила игры и по ним нужно играть");
+      Protchenko.Add("Я пришла сюда работать не ради денег.");
+      Protchenko.Add("Ну чё, сдаём или по домам?");
+      Protchenko.Add("Я вам покажу, как развернуть Докер-контейнер, когда-нибудь");
+      Protchenko.Add("Пойдёте лабы Гончаревичу сдвать");
+      Memas.Add("https://raw.githubusercontent.com/donwhispers/chatbotssp/master/mems/izGUdkA7itU.jpg");
+      Memas.Add("https://raw.githubusercontent.com/donwhispers/chatbotssp/master/mems/K0a0QHM67nk.jpg");
       var me = botClient.GetMeAsync().Result;
       Console.WriteLine(
         $"Hello, World! I am user {me.Id} and my name is {me.FirstName}."
@@ -25,60 +44,65 @@ namespace Awesome {
       {
       case  "Протченко":
       {
-        Console.WriteLine($"Received a text message in chat {e.Message.Chat.Id}.");
+        Console.WriteLine($"Received a text message in chat {e.Message.Chat.Id} :: {e.Message.Text}.");
+        Random r = new Random();
         await botClient.SendTextMessageAsync(
           chatId: e.Message.Chat,
-          text:   "Я пришла сюда работать не ради денег"
+          text:  Protchenko[r.Next(0,Protchenko.Count)]
         );
         break;
       }
       case "Батин":
       {
-        Console.WriteLine($"Received a text message in chat {e.Message.Chat.Id}.");
+        Console.WriteLine($"Received a text message in chat {e.Message.Chat.Id} :: {e.Message.Text}.");
+        Random r = new Random();
         await botClient.SendTextMessageAsync(
           chatId: e.Message.Chat,
-          text:   "Так это, как это ваша фамилия?"
+          text:  Butin[r.Next(0,Butin.Count)]
         );
         break;
       }
       case "Стригалёв":
       {
-        Console.WriteLine($"Received a text message in chat {e.Message.Chat.Id}.");
+        Console.WriteLine($"Received a text message in chat {e.Message.Chat.Id} :: {e.Message.Text}.");
+        Random r = new Random();
         await botClient.SendTextMessageAsync(
           chatId: e.Message.Chat,
-          text:   "Семантические связи, молодые люди, семантические связи"
+          text:  Strigalev[r.Next(0,Strigalev.Count)]
         );
         break;
       }
       case "/help":
       {
-        Console.WriteLine($"Received a text message in chat {e.Message.Chat.Id}.");
+        Console.WriteLine($"Received a text message in chat {e.Message.Chat.Id} :: {e.Message.Text}.");
         await botClient.SendTextMessageAsync(
           chatId: e.Message.Chat,
-          text:   "/start, Протченко, Батин, Стригалёв, мемас"
+          text:   "Протченко, Батин, Стригалёв; БОНУС: мемас"
         );
         break;
       }
       case "/start":
       {
-        Console.WriteLine($"Received a text message in chat {e.Message.Chat.Id}.");
+        Console.WriteLine($"Received a text message in chat {e.Message.Chat.Id} :: {e.Message.Text}.");
         await botClient.SendTextMessageAsync(
           chatId: e.Message.Chat,
-          text:   "Hello! I'm ASOI-Memes chat-bot, today is " + DateTime.Now.ToString()
+          text:   "Привет, я храню цитаты преподов с АСОИ, введи /help, чтобы узнать, доступных преподов. "
         );
         break;
       }
       case "мемас":
       {
+        Console.WriteLine($"Received a text message in chat {e.Message.Chat.Id} :: {e.Message.Text}.");
+        Random r = new Random();
     await botClient.SendPhotoAsync(
           chatId: e.Message.Chat,
-  photo: "https://raw.githubusercontent.com/donwhispers/chatbotssp/master/mems/izGUdkA7itU.jpg"
-);
+          photo: Memas[r.Next(0,Memas.Count)]
+      );
   break;
       }
        default:
       {
-        Console.WriteLine($"Received a text message in chat {e.Message.Chat.Id}.");
+        Console.WriteLine($"Received a text message in chat {e.Message.Chat.Id} :: {e.Message.Text}.");
         await botClient.SendTextMessageAsync(
           chatId: e.Message.Chat,
           text:   "Это вряд ли фамилия препода"
